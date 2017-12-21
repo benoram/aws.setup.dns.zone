@@ -1,0 +1,28 @@
+  AWSTemplateFormatVersion: "2010-09-09"
+  Parameters:
+    Domain: 
+      Type: String
+      Description: Enter a domain to use when creating the zone.
+  Resources: 
+    DNSZone: 
+      Type: "AWS::Route53::HostedZone"
+      Properties: 
+        Name: 
+          Ref: Domain
+  Outputs:
+    Domain:
+      Description: The primary domain for this account
+      Value: 
+        Ref: Domain
+      Export:
+        Name: PrimaryDomain
+    HostedZoneId:
+      Description: The primary Route53 ZoneId for this account
+      Value: 
+        Ref: DNSZone
+      Export:
+        Name: PrimaryHostedZoneId
+    NameServers:
+      Description: The nameservers for the primary zone
+      Value: 
+        !Join [ ',',  !GetAtt DNSZone.NameServers ]
