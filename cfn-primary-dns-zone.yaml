@@ -16,6 +16,11 @@
         Ref: Domain
       Export:
         Name: PrimaryDomain
+    WWWDomain:
+      Description: The primary domain for this account prefixed with WWW
+      Value: !Sub www.${Domain}
+      Export:
+        Name: PrimaryDomainWWW
     HostedZoneId:
       Description: The primary Route53 ZoneId for this account
       Value: 
