@@ -18,7 +18,7 @@
     HostedZoneId:
       Description: The Route53 ZoneId for this domain
       Value: 
-        Ref: ZoneID
+        Ref: DNSZone
     NameServers:
       Description: The nameservers for the primary zone
       Value: 
