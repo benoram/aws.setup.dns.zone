@@ -1,5 +1,5 @@
   AWSTemplateFormatVersion: "2010-09-09"
-  Description: Primary DNS Zone for account
+  Description: Setup DNS Zone in Route53
   Parameters:
     Domain: 
       Type: String
@@ -12,17 +12,13 @@
           Ref: Domain
   Outputs:
     Domain:
-      Description: The primary domain for this account
+      Description: The domain setup by this script
       Value: 
         Ref: Domain
-      Export:
-        Name: PrimaryDomain
     HostedZoneId:
-      Description: The primary Route53 ZoneId for this account
+      Description: The Route53 ZoneId for this domain
       Value: 
-        Ref: DNSZone
-      Export:
-        Name: PrimaryHostedZoneId
+        Ref: ZoneID
     NameServers:
       Description: The nameservers for the primary zone
       Value: 
