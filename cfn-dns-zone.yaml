@@ -1,24 +1,30 @@
   AWSTemplateFormatVersion: "2010-09-09"
+
   Description: Setup DNS Zone in Route53
+  
   Parameters:
-    Domain: 
+    DomainName: 
       Type: String
       Description: Enter a domain to use when creating the zone.
+  
   Resources: 
     DNSZone: 
       Type: "AWS::Route53::HostedZone"
       Properties: 
         Name: 
-          Ref: Domain
+          Ref: DomainName
+  
   Outputs:
     Domain:
       Description: The domain setup by this script
       Value: 
-        Ref: Domain
-    HostedZoneId:
+        Ref: DomainName
+
+    ZoneId:
       Description: The Route53 ZoneId for this domain
       Value: 
         Ref: DNSZone
+
     NameServers:
       Description: The nameservers for the primary zone
       Value: 
